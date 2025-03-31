@@ -1,6 +1,9 @@
 import { IsInt, IsNumber, IsOptional, IsString, IsUUID, MaxLength } from "class-validator";
+import { Product } from "../entities/product.entity";
+import { OmitType } from "@nestjs/mapped-types";
+import { Provider } from "src/providers/entities/provider.entity";
 
-export class CreateProductDto {
+export class CreateProductDto extends OmitType(Product, ['productId'] as const) {
     @IsString()
     @IsUUID('4')
     @IsOptional()
@@ -14,6 +17,5 @@ export class CreateProductDto {
     countSeal: number;
     @IsString()
     @IsUUID('4')
-    @IsOptional()
-    provider: string;
+    provider: Provider[];
 }
