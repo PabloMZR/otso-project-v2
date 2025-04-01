@@ -37,7 +37,13 @@ export class ProductsService {
   }
 
   findByProvider(id: string) {
-    return "ok"
+    return this.productRepository.find({
+      where: {
+        provider: {
+          providerId: id,
+        },
+      },
+    })
     /*
     const productsFound = this.products.filter((product) => product.provider === id)
     if(productsFound.length === 0) throw new NotFoundException()

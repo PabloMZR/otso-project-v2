@@ -17,5 +17,5 @@ export class CreateProductDto extends OmitType(Product, ['productId'] as const) 
     countSeal: number;
     @IsString()
     @IsUUID('4')
-    provider: Provider[];
+    provider: Provider
 }
