@@ -12,4 +12,11 @@ export class Location {
      locationLatLng: number[];
      //@Column({type: "text"})
      //email: string;
+
+     //Relacion con region
+     // @ManyToOne(() => Region, (region) => region.regionId)
+     // region: Region;
+     //Relacion con manager
+     // @ManyToOne(() => Manager, (manager) => manager.managerId
+     // manager: Manager;
 }
