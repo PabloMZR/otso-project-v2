@@ -12,6 +12,11 @@ export class EmployeesController {
     return this.employeesService.create(createEmployeeDto);
   }
 
+  @Post('Upload')
+  uploadPhoto(){
+    return "ok"
+  }
+
   @Get()
   findAll() {
     return this.employeesService.findAll();
