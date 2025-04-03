@@ -1,2 +1,2 @@
 export const JWT_KEY = "ijkaDODFJFeds(o#j%rtf)_rsujacvASf)ujasf)";
-export const EXPIRES_IN = "30s"
+export const EXPIRES_IN = "60s"
