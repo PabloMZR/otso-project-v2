@@ -20,7 +20,7 @@ export class ProvidersController {
 
   @Get()
   findAll(@UserData() user: User) {
-    if(!user.userRoles) throw new UnauthorizedException("No estas Autorizado, SOLO ADMIN")
+    if(user.userRoles.includes("Employee")) throw new UnauthorizedException("No estas Autorizado, SOLO ADMIN Y MANAGER")
     return this.providersService.findAll();
   }
    
