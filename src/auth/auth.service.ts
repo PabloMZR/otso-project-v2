@@ -7,6 +7,7 @@ import * as bcrypt from "bcrypt";
 import * as jwt  from 'jsonwebtoken';
 import { JwtService } from '@nestjs/jwt';
 import { LoginUserDto } from './dto/login-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 @Injectable()
 export class AuthService {
   
@@ -36,5 +37,17 @@ export class AuthService {
     const token = this.jwtServisece.sign(payload);
     return token
   } 
+
+  async updateUser(userEmail: string, updateUserDto: UpdateUserDto){
+    const newUserData = await this.userReposiroty.preload({
+      userEmail,
+      ...updateUserDto
+    })
+    if (!newUserData) {
+      throw new Error('User not found');
+    }
+    await this.userReposiroty.save(newUserData);
+    return newUserData
+  }
 }
  

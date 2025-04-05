@@ -11,7 +11,9 @@ export class Manager {
     managerSalary: number;
     @Column('text')
     managerPhone: string;
-    @Column('text')
+    @Column('text',{
+        unique: true
+    })
     managerEmail: string;
     @Column('text')
     managerPhoneNumber: string;
