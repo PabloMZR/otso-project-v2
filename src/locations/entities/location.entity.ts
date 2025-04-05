@@ -5,7 +5,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGene
 
 @Entity()
 export class Location {
-     @PrimaryGeneratedColumn("uuid")
+     @PrimaryGeneratedColumn("increment")
      locationId: string;
      @Column({type: "text"})
      locationName: string;
@@ -17,7 +17,9 @@ export class Location {
      //email: string;
 
      //Relacion con Manager
-     @OneToOne(() => Manager)
+     @OneToOne(() => Manager,{
+          eager: true,
+     })
      @JoinColumn({
           name: "managerId"
      })

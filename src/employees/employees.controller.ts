@@ -15,6 +15,7 @@ export class EmployeesController {
   create(@Body() createEmployeeDto: CreateEmployeeDto) {
     return this.employeesService.create(createEmployeeDto);
   }
+
   @Auth(ROLES.EMPLOYEE, ROLES.MANAGER)
   @Post('Upload')
   @UseInterceptors(FileInterceptor('file'))
@@ -22,16 +23,25 @@ export class EmployeesController {
     console.log(file);
     return "ok"
   }
+  
   @Auth(ROLES.MANAGER)
   @Get()
   findAll() {
     return this.employeesService.findAll();
   }
+  
   @Auth(ROLES.MANAGER)
   @Get(':id', )
   findOne(@Param('id', new ParseUUIDPipe({version: '4'})) id: string) {
     return this.employeesService.findOne(id);
   }
+
+  @Auth(ROLES.MANAGER)
+  @Get('location/:id')
+  findAllLocation(@Param('id') id:string){
+    return this.employeesService.findByLocation(+id)
+  }
+
   @Auth(ROLES.MANAGER)
   @Patch(':id')
   update(@Param('id',new ParseUUIDPipe({version: '4'})) id: string, @Body() updateEmployeeDto: UpdateEmployeeDto) {
